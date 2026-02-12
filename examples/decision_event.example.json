@@ -1,0 +1,21 @@
+{
+  "decision_id": "dec_20250129_141900_8f3a91",
+  "timestamp": "2025-01-29T22:19:00Z",
+  "entity_id": "player_203081",
+  "input_features_snapshot": {
+    "points":15 ,
+    "minutes_played":22 ,
+    "fouls":2 ,
+    "fatigue_index": 4.0,
+    "injury_status": "clear",
+    "score_margin":5,
+    "quarter":3 ,
+    "time_remaining_sec": 360
+  },
+
+  "model_version":"logreg_v2.1.0",
+  "policy_version": "minutes_policy_v1.2.0",
+  "model_score": 0.67,
+  "threshold": 0.68,
+  "decision": "HOLD_MINUTES"
+}

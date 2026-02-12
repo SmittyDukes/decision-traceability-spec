@@ -1,0 +1,104 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DecisionEvent",
+  "type": "object",
+  "required": [
+    "decision_id",
+    "timestamp",
+    "entity_id",
+    "input_features_snapshot",
+    "model_version",
+    "policy_version",
+    "model_score",
+    "threshold",
+    "decision"
+  ],
+  "properties": {
+    "decision_id": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "entity_id": {
+      "type": "string"
+    },
+    "input_features_snapshot": {
+  "type": "object",
+  "required": [
+    "points",
+    "minutes_played",
+    "fouls",
+    "fatigue_index",
+    "injury_status",
+    "score_margin",
+    "quarter",
+    "time_remaining_sec"
+  ],
+  "properties": {
+    "points": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "minutes_played": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 60
+    },
+    "fouls": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 6
+    },
+    "fatigue_index": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 10
+    },
+    "injury_status": {
+      "type": "string",
+      "enum": ["clear", "limited", "out"]
+    },
+    "score_margin": {
+      "type": "integer"
+    },
+    "quarter": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4
+    },
+    "time_remaining_sec": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 720
+    }
+  },
+  "additionalProperties": false
+}
+
+    },
+    "model_version": {
+      "type": "string"
+    },
+    "policy_version": {
+      "type": "string"
+    },
+    "model_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "threshold": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+
+    },
+    "decision": {
+      "type": "string",
+      "enum": ["EXTEND_MINUTES", "HOLD_MINUTES"]
+    }
+  }
+}
