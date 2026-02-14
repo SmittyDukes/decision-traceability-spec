@@ -56,6 +56,19 @@ All decisions are versioned, schema-validated, and rule-validated before logging
 2. **override_event** emitted when a human overrides (who/why)
 3. **outcome_event** emitted when ground truth becomes available (delayed labels)
 
+## Decision Lineage
+
+Each decision participates in a lineage chain:
+
+model_version → decision_event → override_event (optional) → outcome_event → evaluation
+
+This enables:
+- Replaying decisions
+- Measuring regret
+- Evaluating policy effectiveness
+- Monitoring trust over time
+
+
 ## Key Guarantees
 - Reproducible decisions via strict versioning (`model_version`, `policy_version`)
 - Input contract enforcement (`additionalProperties: false`)
