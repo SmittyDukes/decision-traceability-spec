@@ -57,3 +57,10 @@ A decision_event MUST include:
 - All event schemas MUST include schema_version.
 - Backward-incompatible changes require a major version bump.
 - Producers MUST not emit events that violate the declared schema_version.
+
+## Idempotency Requirements
+
+- decision_id MUST be globally unique.
+- decision_id MUST be deterministic per request (idempotency key).
+- Storage layer MUST enforce uniqueness constraint on decision_id.
+- Duplicate decision events MUST be rejected or validated as identical.
