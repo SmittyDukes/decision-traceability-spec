@@ -11,7 +11,8 @@
     "policy_version",
     "model_score",
     "threshold",
-    "decision"
+    "decision",
+    "schema_version"
   ],
   "properties": {
     "decision_id": {
@@ -80,6 +81,9 @@
 
     },
     "model_version": {
+      "type": "string"
+    },
+    "schema_version": {
       "type": "string"
     },
     "policy_version": {

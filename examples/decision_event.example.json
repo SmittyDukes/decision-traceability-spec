@@ -17,5 +17,7 @@
   "policy_version": "minutes_policy_v1.2.0",
   "model_score": 0.67,
   "threshold": 0.68,
-  "decision": "HOLD_MINUTES"
+  "decision": "HOLD_MINUTES",
+  "schema_version": "decision_event_v1.0.0"
+
 }

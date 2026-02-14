@@ -47,3 +47,13 @@ A decision_event MUST include:
 ## Human Override Governance
 - [ ] Find override events where override_reason is missing
 - [ ] Flag games where override rate exceeds X% (potential trust or misuse issue)
+
+## Immutability & Append-Only Guarantees
+- Decision events MUST be append-only and immutable once written.
+- Corrections MUST be expressed as new events (e.g., override_event, correction_event) referencing the original decision_id.
+- Any mutation of historical decision_event records is a traceability violation.
+
+## Schema Versioning
+- All event schemas MUST include schema_version.
+- Backward-incompatible changes require a major version bump.
+- Producers MUST not emit events that violate the declared schema_version.
