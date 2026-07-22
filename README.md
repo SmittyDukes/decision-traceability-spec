@@ -64,32 +64,31 @@ Required Fields:
 - policy_version — version of decision logic
 - inputs — snapshot of input features
 - extend_probability — model output probability
-- threshold — decision boundary
-- decision — final action (extend / do_not_extend)
+- threshold_low / threshold_high — abstention band boundaries (a single threshold collapses to threshold_low == threshold_high)
+- decision — final action (extend / do_not_extend / abstain)
 - reason — explanation for the decision
 
 Example:
 {
   "decision_id": "792936ac-f022-4424-abbb-eb06551874be",
-  "timestamp": "2026-03-20T22:14:00Z",
-  "model_version": "v1",
-  "policy_version": "p1",
+  "timestamp": "2026-07-22T21:05:00Z",
+  "model_version": "v2",
+  "policy_version": "p2",
   "inputs": {
-    "minutes_played": 30,
-    "fatigue_index": 0.55,
-    "fouls": 3,
-    "time_left": 240,
-    "score_margin": 2,
-    "timeouts_left": 1
+    "days_rest": 2,
+    "is_away": 1,
+    "rolling_avg_min": 24.2,
+    "prev_min": 27
   },
-  "extend_probability": 0.87,
-  "threshold": 0.60,
-  "decision": "extend",
-  "reason": "probability_above_threshold"
+  "extend_probability": 0.42,
+  "threshold_low": 0.30,
+  "threshold_high": 0.70,
+  "decision": "abstain",
+  "reason": "probability_in_abstention_band"
 }
 
 ## Decision Lifecycle
-1. **decision_event** emitted at decision time (inputs, model_version, policy_version, threshold, decision)
+1. **decision_event** emitted at decision time (inputs, model_version, policy_version, threshold(s), decision)
 2. **override_event** emitted when a human overrides (who/why)
 3. **outcome_event** emitted when ground truth becomes available (delayed labels)
 
